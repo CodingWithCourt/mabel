@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+const moment = require('moment');
 const app = express();
+const db = require('./config/db');
 
 // Middleware
 app.use(helmet());
@@ -14,11 +16,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-    res.send('Hello from Mabel!');
+    res.json({msg: 'Hello from Mabel!'});
 });
 
-app.get('/api/*', (req, res) => {
-    res.send('Hello from Mabel, somewhere else!');
+// Adding other routes
+app.use('/api/user/', require('./routes/user'));
+
+// Universal Error Handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 app.listen(process.env.HOST_PORT, () => {

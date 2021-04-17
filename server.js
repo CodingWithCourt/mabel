@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+const moment = require('moment');
 const app = express();
+const db = require('./config/db');
 
 // Middleware
 app.use(helmet());
@@ -14,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-    res.send('Hello from Mabel!');
+    res.json({msg: 'Hello from Mabel!'});
 });
 
 app.get('/api/*', (req, res) => {

@@ -21,6 +21,7 @@ app.get('/api', (req, res) => {
 
 // Adding other routes
 app.use('/api/user/', require('./routes/user'));
+app.use('/api/product', require('./routes/product'));
 
 // Universal Error Handler
 app.use((err, req, res, next) => {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER_NAME}.pau7i.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER_NAME}.mha7q.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 // Attempt to connect to database
 mongoose.connect(uri,

@@ -25,10 +25,13 @@ app.use('/api/product', require('./routes/product'));
 
 // Universal Error Handler
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    // console.error(err.stack);
+    // TODO: Log with winston
     res.status(500).send('Something broke!');
 });
 
 app.listen(process.env.HOST_PORT, () => {
     console.log(`Listening at http://${process.env.HOST_NAME}:${process.env.HOST_PORT}`);
 });
+
+module.exports = app;

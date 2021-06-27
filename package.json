@@ -4,9 +4,10 @@
   "description": "Express server for codingwithcourt.com\\",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "test": "set NODE_ENV=test && mocha --reporter spec --exit --timeout=10000 tests/",
+    "test:watch": "set NODE_ENV=test && nodemon --exec \"mocha --reporter spec --exit --timeout=10000 tests\/\""
   },
   "repository": {
     "type": "git",

@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('underscore');
-const User = require('../models/User');
+const User = require('../../db/models/User');
 
 // Inserting User CREATE
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     const user = new User(req.body);
-    user.save().then(
-        (result) => {
-            res.json(result);
-        }
-    ).catch(err => next(err));
+
+    try {
+        const savedUser = await user.save();
+        res.json(savedUser);
+    } catch(error) {
+        next(error);
+    }
 });
 
 // Login READ
